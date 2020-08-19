@@ -1,24 +1,9 @@
 const { app, BrowserWindow } = require('electron')
 const { shutdown } = require('./server.js')
-// Change UI setup here
-const ui = 1;
-//
-var pathToHtml = './index' + ui + '.html';
 
-var args;
-if (ui == 1) {
-  args = {
-    width: 800,
-    height:848,
-    webPreferences: {
-      nodeIntegration: true
-    },
-    frame: false,
-    resizable: false
-  };
-}
-else {
-  args = {
+function createWindow () {
+  // Create the browser window.
+  let win = new BrowserWindow({
     width: 800,
     height:848,
     webPreferences: {
@@ -26,15 +11,14 @@ else {
     },
     frame: true,
     resizable: true
-  };
-}
+  })
 
-function createWindow () {
-  // Create the browser window.
-  let win = new BrowserWindow(args)
+  win.on('close', function(e){
+    console.log(typeof shutdown.shutdown);
+    });
 
   // and load the index.html of the app.
-  win.loadFile(pathToHtml);
+  win.loadFile('index.html')
 }
 
-app.whenReady().then(createWindow);
+app.whenReady().then(createWindow)

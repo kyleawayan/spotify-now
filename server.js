@@ -5,7 +5,7 @@ var server = app.listen(serverPort);
 
 app.get('/callback', function (req, res) {
   res.send(req.url.split('=')[1])
-  shutdown()
+  //shutdown()
 })
 
 // HTTP Keep-Alive to a short time to allow graceful shutdown

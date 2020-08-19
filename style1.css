@@ -22,11 +22,12 @@ body {
     margin-left: 10%;
     margin-right: 5%;
     background-color: black;
+    background-size: 800px, 800px;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
-    background-size: 800px 800px;
     background-position-y: 48px;
+    background-repeat: no-repeat;
     overflow-x: hidden;
     overflow-y: hidden;
 }

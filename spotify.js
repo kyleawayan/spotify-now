@@ -5,8 +5,8 @@ const path = './file.txt';
 var spotifyApi = new SpotifyWebApi();
 
 // Set Spotify app client variables here:
-const CLIENT_ID = 'YOUR_CLIENT_ID';
-const CLIENT_SECRET = 'YOU_CLIENT_SECRET';
+const CLIENT_ID = '665ad66fad2a4c39b34676f257e1db5c';
+const CLIENT_SECRET = 'f1c72b0560964e7ba7519fa9e32ac77a';
 
 const update_ms = 5000;
 const URI = 'http://localhost:8080/callback';
@@ -14,6 +14,7 @@ const scopes = ["user-modify-playback-state", "user-read-playback-state"];
 const url = "https://accounts.spotify.com/authorize/?client_id=" + CLIENT_ID + "&response_type=code&redirect_uri=" + URI + "&scope=" + scopes;
 var mySong = '';
 var firstUpdate = true;
+
 
 if (fs.existsSync(path)) {
   console.log(url);
@@ -65,7 +66,7 @@ if (fs.existsSync(path)) {
         var remaining_ms = data.item.duration_ms - data.progress_ms;
         if (remaining_ms < update_ms) {
           setTimeout(update, remaining_ms);
-          console.log('Predicting track skip in ' + remaining_ms);
+          console.log('Predicting track skip in ' + remaining_ms + 'ms');
         }
         firstUpdate = false;
         mySong = data.item.name;
@@ -125,7 +126,6 @@ if (fs.existsSync(path)) {
   var firingFunc = singleClick;
 
   window.onclick = function() {
-    console.log(xCoords(event));
     if(firing) 
       return;
 
